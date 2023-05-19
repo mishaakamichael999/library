@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="stageAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="550.0" stylesheets="@adding.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.library.AddingController">
+   <children>
+      <AnchorPane layoutX="54.0" layoutY="55.0" prefHeight="220.0" prefWidth="450.0" stylesheets="@adding.css">
+         <children>
+            <TextField fx:id="nameField" layoutX="205.0" layoutY="22.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="22.0" />
+            <Label layoutX="56.0" layoutY="27.0" text="Назва:" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="27.0" />
+            <Separator layoutX="28.0" layoutY="45.0" prefHeight="10.0" prefWidth="394.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="50.0" />
+            <Separator layoutX="39.0" layoutY="94.0" prefHeight="10.0" prefWidth="394.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="90.0" />
+            <Separator layoutX="47.0" layoutY="108.0" prefHeight="10.0" prefWidth="394.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="130.0" />
+            <Separator layoutX="54.0" layoutY="149.0" prefHeight="10.0" prefWidth="394.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="170.0" />
+            <Separator layoutX="63.0" layoutY="202.0" prefHeight="10.0" prefWidth="394.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="220.0" />
+            <Label layoutX="66.0" layoutY="37.0" text="Автор:" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="67.0" />
+            <Label layoutX="66.0" layoutY="77.0" text="Дата публікації:" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="284.0" AnchorPane.topAnchor="107.0" />
+            <Label layoutX="66.0" layoutY="117.0" text="Стан:" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="147.0" />
+            <Label layoutX="43.0" layoutY="185.0" prefHeight="18.0" prefWidth="102.0" text="Обкладинка:" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="292.0" AnchorPane.topAnchor="187.0" />
+            <TextField fx:id="authorField" layoutX="203.0" layoutY="63.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="62.0" />
+            <TextField fx:id="qualityField" layoutX="223.0" layoutY="82.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="142.0" />
+            <Button fx:id="btn_edit" layoutX="203.0" layoutY="184.0" mnemonicParsing="false" onAction="#btn_edit_image" prefHeight="30.0" prefWidth="153.0">
+               <graphic>
+                  <FontAwesomeIconView fx:id="edit" glyphName="EDIT" size="2em" />
+               </graphic>
+            </Button>
+            <Label fx:id="btn_status" layoutX="303.0" layoutY="191.0" />
+            <DatePicker fx:id="publishDateField" layoutX="203.0" layoutY="102.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="219.0" layoutY="19.0" text="Додавання книги" AnchorPane.topAnchor="19.0" />
+      <Button fx:id="exitAndAcceptBtn" layoutX="430.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnAcceptAdd" prefHeight="30.0" prefWidth="87.0" text="Додати" />
+   </children>
+</AnchorPane>

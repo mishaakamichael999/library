@@ -1,36 +1,31 @@
-.button {
-    -fx-position: relative;
-    -fx-font-size: 17px;
-    -fx-text-transform: uppercase;
+
+.layout{
+    -fx-background-color: linear-gradient(to bottom right, #ae39fc, #481de5);
+}
+
+
+.buttonLogin {
+    -fx-alignment: center;
+    -fx-background-color: linear-gradient(to bottom right, #8fade5, #a507e3);
+
+    -fx-border-color: transparent;
+    -fx-border-style: none;
+    -fx-cursor: hand;
+    -fx-font-family: "Eina01", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
+    -fx-padding: 19px 26px;
+    -fx-min-height: 64px;
+    -fx-outline: none;
+    -fx-text-align: center;
     -fx-text-decoration: none;
-    -fx-padding: 1em 2.5em;
-    -fx-display: inline-block;
-    -fx-transition: all .2s easy;
-    -fx-border: none;
-    -fx-font-family: inherit;
-    -fx-font-weight: 500;
-    -fx-text-fill: white;
-    -fx-background-color: #9c64e8;
-    -fx-border-radius: 15px;
-}
-.button:hover {
-    -fx-translate-y: -3px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 0, 10, 0, 0);
-    -fx-text-fill: #70b723;
-}
-.layout {
-    -fx-background-color: linear-gradient(to bottom right, #2b488d, #110b28);
-}
-.textLogin {
-    -fx-text-fill: #a14b89;
-}
-.layoutInner {
-    -fx-background-color: linear-gradient(to bottom right, #0d2454, #3a2c6b);
-    -fx-border-width: 3px;
-    -fx-border-color: #44176e;
+    -fx-user-select: none;
+    -fx-touch-action: manipulation;
+    -fx-vertical-align: middle;
+    -fx-word-break: keep-all;
+    -fx-background-radius: 80px;
 }
 
-
-
-
-
+.buttonLogin:hover {
+    -fx-background-color: linear-gradient(to bottom right, #a507e3, #8fade5);
+}

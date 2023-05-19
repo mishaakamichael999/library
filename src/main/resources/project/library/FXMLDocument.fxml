@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="920.0" styleClass="layout" stylesheets="@login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.library.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="920.0" styleClass="layout" stylesheets="@login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.library.LoginController">
    <children>
-      <AnchorPane layoutX="210.0" layoutY="50.0" prefHeight="400.0" prefWidth="500.0" styleClass="layoutInner" stylesheets="@login.css">
+      <AnchorPane layoutX="210.0" layoutY="50.0" prefHeight="436.0" prefWidth="500.0" styleClass="layoutInner" stylesheets="@login.css">
          <children>
             <Label alignment="TOP_CENTER" layoutX="160.0" layoutY="167.0" prefHeight="40.0" prefWidth="180.0" styleClass="textLogin" stylesheets="@login.css" text="Login">
                <font>
@@ -19,12 +19,13 @@
             </Label>
             <TextField id="fieldLogin" fx:id="username" layoutX="160.0" layoutY="225.0" prefHeight="30.0" prefWidth="180.0" promptText="Username" />
             <PasswordField fx:id="password" layoutX="160.0" layoutY="275.0" prefHeight="30.0" prefWidth="180.0" promptText="Password" />
-            <Button fx:id="layout" alignment="TOP_CENTER" layoutX="175.0" layoutY="323.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" stylesheets="@login.css" text="Log in">
+            <Button fx:id="btn_login" alignment="TOP_CENTER" layoutX="175.0" layoutY="340.0" mnemonicParsing="false" onAction="#checkLogin" prefHeight="40.0" prefWidth="150.0" styleClass="buttonLogin" stylesheets="@login.css" text="Log in">
                <font>
                   <Font name="Cambria" size="15.0" />
                </font>
             </Button>
             <ImageView fx:id="imageUser" fitHeight="150.0" fitWidth="200.0" layoutX="150.0" layoutY="14.0" pickOnBounds="true" />
+            <Label fx:id="wrong" layoutX="187.0" layoutY="305.0" />
          </children>
       </AnchorPane>
    </children>

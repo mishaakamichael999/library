@@ -11,101 +11,101 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.library.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" styleClass="menu" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.library.MenuController">
    <children>
-      <AnchorPane prefHeight="90.0" prefWidth="1000.0">
+      <AnchorPane prefHeight="81.0" prefWidth="1000.0" styleClass="card-from" stylesheets="@menu.css">
          <children>
             <ImageView fx:id="book" fitHeight="90.0" fitWidth="100.0" layoutX="450.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="315.0" text="Library">
+            <Label layoutX="296.0" styleClass="text" text="Library">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <Label layoutX="530.0" layoutY="24.0" text="System">
+            <Label layoutX="530.0" layoutY="24.0" styleClass="text" stylesheets="@menu.css" text="System">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <Button fx:id="arrow_btn" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+            <Button fx:id="bars_btn" layoutY="48.0" minWidth="45.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="40.0" prefWidth="40.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="BARS" size="2em" />
+               </graphic></Button>
+            <Button fx:id="arrow_btn" layoutY="48.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="40.0" prefWidth="40.0">
                <graphic>
                   <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="2em" />
-               </graphic>
-            </Button>
-            <Button layoutY="48.0" minWidth="45.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
-               <graphic>
-                  <FontAwesomeIconView glyphName="BARS" size="2em" wrappingWidth="21.0" />
-               </graphic>
-            </Button>
+               </graphic></Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="90.0" prefHeight="460.0" prefWidth="180.0">
+      <AnchorPane fx:id="nav_form" layoutX="8.0" layoutY="109.0" prefHeight="435.0" prefWidth="179.0" styleClass="card-from">
          <children>
-            <Label layoutY="153.0" prefHeight="40.0" prefWidth="150.0" text="Glad to see ">
+            <Label layoutY="153.0" prefHeight="40.0" prefWidth="150.0" styleClass="text" text="Glad to see ">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="272.0" prefHeight="48.0" prefWidth="155.0" styleClass="text" text="Enjoy your ">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="2.0" layoutY="264.0" prefHeight="40.0" prefWidth="150.0" text="Enjoy your ">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
             <ImageView fx:id="smile" fitHeight="70.0" fitWidth="70.0" layoutX="1.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="87.0" layoutY="187.0" text="YOU">
+            <Label layoutX="87.0" layoutY="187.0" styleClass="text" text="YOU">
                <font>
-                  <Font size="34.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="87.0" layoutY="230.0" prefHeight="49.0" prefWidth="90.0" text="AGAIN">
+            <Label layoutX="77.0" layoutY="230.0" prefHeight="49.0" prefWidth="100.0" styleClass="text" text="AGAIN">
                <font>
-                  <Font size="27.0" />
+                  <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="60.0" layoutY="420.0" prefHeight="26.0" prefWidth="62.0" text="Log out">
+            <Label layoutX="67.0" layoutY="387.0" prefHeight="29.0" prefWidth="68.0" styleClass="text" text="Log out">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Circle fill="DODGERBLUE" layoutX="87.0" layoutY="73.0" radius="59.0" stroke="BLACK" strokeType="INSIDE" />
-            <Button fx:id="photo" layoutX="33.0" layoutY="18.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="109.0" style="-fx-background-color: transparent;">
+            <Circle fx:id="circle_image" fill="#404851" layoutX="87.0" layoutY="73.0" radius="59.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button fx:id="edit_btn" layoutX="33.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertImage" prefHeight="108.0" prefWidth="109.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <FontAwesomeIconView glyphName="EDIT" size="35" />
+                  <FontAwesomeIconView fx:id="edit_icon" glyphName="EDIT" size="2em" styleClass="edit_btn" />
                </graphic>
+<!--               <graphic>-->
+<!--                  <FontAwesomeIconView glyphName="EDIT" size="35" />-->
+<!--               </graphic>-->
             </Button>
-            <Button fx:id="logout" layoutX="1.0" layoutY="415.0" minWidth="42.0" mnemonicParsing="false" onAction="#logoutClick" prefHeight="36.0">
+            <Button fx:id="logout" layoutX="7.0" layoutY="383.0" minWidth="42.0" mnemonicParsing="false" onAction="#logoutClick" prefHeight="36.0">
                <graphic>
-                  <FontAwesomeIconView glyphName="SIGN_OUT" size="3em" text="" wrappingWidth="34.42856979370117" />
-               </graphic>
-            </Button>
-            <Label layoutX="3.0" layoutY="304.0" prefHeight="36.0" prefWidth="150.0" text="working time">
+                  <FontAwesomeIconView glyphName="SIGN_OUT" size="2EM" />
+               </graphic></Button>
+            <Label layoutX="3.0" layoutY="304.0" prefHeight="36.0" prefWidth="150.0" styleClass="text" text="working time">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="180.0" layoutY="90.0" prefHeight="460.0" prefWidth="820.0">
+      <AnchorPane fx:id="mainCenter_form" layoutX="180.0" layoutY="90.0" prefHeight="460.0" prefWidth="820.0">
          <children>
-            <AnchorPane prefHeight="460.0" prefWidth="215.0">
+            <AnchorPane layoutX="13.0" layoutY="19.0" prefHeight="435.0" prefWidth="215.0" styleClass="card-from">
                <children>
                   <AnchorPane layoutX="10.0" layoutY="283.0" prefHeight="144.0" prefWidth="198.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
                         <Button fx:id="update" layoutX="14.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Оновити" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" />
-                        <Button fx:id="info" layoutX="118.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Інформація " AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="10.0" />
-                        <Button fx:id="delete" layoutX="118.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Видалити" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                        <Button fx:id="add" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Додати" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <Button fx:id="info" layoutX="118.0" layoutY="80.0" mnemonicParsing="false" onAction="#btn_info" prefHeight="40.0" prefWidth="90.0" text="Інформація " AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="10.0" />
+                        <Button fx:id="delete" layoutX="118.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteRowFromTable" prefHeight="40.0" prefWidth="80.0" text="Видалити" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <Button fx:id="add" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#adding" prefHeight="40.0" prefWidth="80.0" text="Додати" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
                      </children>
                   </AnchorPane>
-                  <ImageView fitHeight="180.0" fitWidth="150.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="33.0" />
-                  <Label layoutX="75.0" layoutY="198.0" prefHeight="26.0" prefWidth="68.0" text="Назва">
+                  <ImageView fitHeight="164.0" fitWidth="138.0" layoutX="39.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="card-from" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="33.0" />
+                  <Label layoutX="75.0" layoutY="202.0" prefHeight="35.0" prefWidth="68.0" styleClass="text" text="Назва">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="22.0" layoutY="230.0" prefHeight="35.0" prefWidth="175.0" text="Label">
+                  <Label layoutX="22.0" layoutY="230.0" prefHeight="35.0" prefWidth="175.0" styleClass="text" text="Label">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -114,15 +114,16 @@
             </AnchorPane>
             <AnchorPane layoutX="218.0" prefHeight="460.0" prefWidth="605.0">
                <children>
-                  <TableView prefHeight="460.0" prefWidth="600.0">
+                  <TableView fx:id="table" layoutX="19.0" layoutY="19.0" onMouseClicked="#choosingRow" prefHeight="435.0" prefWidth="579.0" styleClass="card-from">
                     <columns>
-                      <TableColumn prefWidth="35.0" text="ID" />
-                      <TableColumn prefWidth="98.0" text="АВТОР" />
-                        <TableColumn prefWidth="95.0" text="ДАТА РЕЄСТР." />
-                        <TableColumn prefWidth="92.0" text="ДАТА ВИДАН." />
-                        <TableColumn prefWidth="54.0" text="КІЛЬКІСТЬ" />
-                        <TableColumn minWidth="8.0" prefWidth="42.0" text="СТАН" />
-                        <TableColumn prefWidth="75.0" />
+                      <TableColumn fx:id="idColm" minWidth="15.0" prefWidth="42.0" text="ID" />
+                      <TableColumn fx:id="nameColm" prefWidth="90.00003051757812" text="НАЗВА" />
+                        <TableColumn fx:id="authorColm" prefWidth="88.0" text="АВТОР" />
+                        <TableColumn fx:id="publishColm" prefWidth="79.0" text="ПУБЛІКАЦІЯ" />
+                        <TableColumn fx:id="qualityColm" prefWidth="73.0" text="СТАН" />
+                        <TableColumn fx:id="regColm" minWidth="8.0" text="РЕЄСТРАЦІЯ" />
+                        <TableColumn fx:id="statusColm" prefWidth="74.0" text="СТАТУС" />
+                        <TableColumn fx:id="imageColm" prefWidth="44.0" visible="false" />
                     </columns>
                   </TableView>
                </children>
