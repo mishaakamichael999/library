@@ -1,6 +1,6 @@
 package project.library;
 
 
-public class HelloController{ {
+public class HelloController{
 
-};
+}

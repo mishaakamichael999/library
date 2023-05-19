@@ -1,3 +1,32 @@
-.root{
-    --fxbackground-color: #4e2075;
+
+.button {
+    -fx-position: relative;
+    -fx-font-size: 17px;
+    -fx-text-transform: uppercase;
+    -fx-text-decoration: none;
+    -fx-padding: 1em 2.5em;
+    -fx-display: inline-block;
+    -fx-border-radius: 6px;
+    -fx-transition: all .2s easy;
+    -fx-border: none;
+    -fx-font-family: inherit;
+    -fx-font-weight: 500;
+    -fx-text-fill: white;
+    -fx-background-color: #9c64e8;
 }
+.button:hover {
+    -fx-translate-y: -3px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 0, 10, 0, 0);
+    -fx-text-fill: #70b723;
+}
+.layout{
+    -fx-background-color: linear-gradient(to bottom right, #2b488d, #110b28);
+}
+.textLogin{
+    -fx-text-fill: #a14b89;
+}
+
+
+
+
+
