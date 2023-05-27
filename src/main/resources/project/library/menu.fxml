@@ -99,7 +99,7 @@
                         <Button fx:id="add" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#adding" prefHeight="40.0" prefWidth="80.0" text="Додати" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
                      </children>
                   </AnchorPane>
-                  <ImageView fitHeight="164.0" fitWidth="138.0" layoutX="39.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="card-from" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="33.0" />
+                  <ImageView fx:id="coverOfBook" fitHeight="164.0" fitWidth="138.0" layoutX="39.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="card-from" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="33.0" />
                   <Label layoutX="75.0" layoutY="202.0" prefHeight="35.0" prefWidth="68.0" styleClass="text" text="Назва">
                      <font>
                         <Font size="22.0" />
@@ -122,8 +122,8 @@
                         <TableColumn fx:id="publishColm" prefWidth="79.0" text="ПУБЛІКАЦІЯ" />
                         <TableColumn fx:id="qualityColm" prefWidth="73.0" text="СТАН" />
                         <TableColumn fx:id="regColm" minWidth="8.0" text="РЕЄСТРАЦІЯ" />
-                        <TableColumn fx:id="statusColm" prefWidth="74.0" text="СТАТУС" />
-                        <TableColumn fx:id="imageColm" prefWidth="44.0" visible="false" />
+                        <TableColumn fx:id="statusColm" prefWidth="118.0" text="СТАТУС" />
+                        <TableColumn fx:id="imageColm" minWidth="0.0" prefWidth="0.0" visible="false" />
                     </columns>
                   </TableView>
                </children>

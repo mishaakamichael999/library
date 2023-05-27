@@ -8,11 +8,13 @@ public class DataBase {
     static final String databaseUser = "admin";
     static final String databasePassword = "admin";
     static final String url = "jdbc:mysql://localhost/" + databaseName;
-    static Connection databaseLink;
+    public static PreparedStatement preparedStatement;
+    public static ResultSet result;
+    public static Connection connection;
 
     public static Connection getConnection() throws SQLException{
-            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-        return databaseLink;
+        connection = DriverManager.getConnection(url, databaseUser, databasePassword);
+        return connection;
     }
 
 }

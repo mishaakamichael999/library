@@ -22,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -31,10 +32,7 @@ import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
@@ -109,17 +107,6 @@ public class MenuController implements Initializable {
 
     ObservableList<Books> tableData = FXCollections.observableArrayList();
 
-
-//    public static  ObservableList<Books> getData(){
-//        try {
-//            Connection collection = DataBase.getConnection();
-//
-//        }
-//        catch (SQLException e){
-//            e.printStackTrace();
-//        }
-//            return
-//    }
 
 
 
@@ -248,16 +235,18 @@ public class MenuController implements Initializable {
 
     @FXML
     void btn_info(ActionEvent event) {
+        DataBase.preparedStatement = null;
+        DataBase.result = null;
         try{
                 String sql = "SELECT * FROM books";
 
-                LoginController.preparedStatement = LoginController.connection.prepareStatement(sql);
-                LoginController.result = LoginController.preparedStatement.executeQuery();
+            DataBase.preparedStatement = DataBase.connection.prepareStatement(sql);
+            DataBase.result = DataBase.preparedStatement.executeQuery();
 
 
 
-                while (LoginController.result.next()){
-                    boolean isActive = LoginController.result.getBoolean("status");
+                while (DataBase.result.next()){
+                    boolean isActive = DataBase.result.getBoolean("status");
                     String rowAsString;
                     if (isActive) {
                         rowAsString = "Доступно";
@@ -265,23 +254,39 @@ public class MenuController implements Initializable {
                       rowAsString = "Недоступно";
                     }
                     tableData.add(new Books(
-                            LoginController.result.getInt("id"),
-                            LoginController.result.getString("name"),
-                            LoginController.result.getString("author"),
-                            LoginController.result.getDate("publishDate"),
-                            LoginController.result.getString("quality"),
-                            LoginController.result.getDate("regDate"),
+                            DataBase.result.getInt("id"),
+                            DataBase.result.getString("name"),
+                            DataBase.result.getString("author"),
+                            DataBase.result.getDate("publishDate"),
+                            DataBase.result.getString("quality"),
+                            DataBase.result.getDate("regDate"),
                             rowAsString,
-                           LoginController.result.getBlob("image")
+                            DataBase.result.getBlob("image")
                     ));
                     table.setItems(tableData);
                 }
-                LoginController.preparedStatement.close();
-                LoginController.result.close();
+            DataBase.preparedStatement.close();
+            DataBase.result.close();
 
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            if (DataBase.result != null) {
+                try {
+                    DataBase.result.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (  DataBase.preparedStatement != null) {
+                try {
+                    DataBase.preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -297,15 +302,7 @@ public class MenuController implements Initializable {
         stageNew.show();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        designInserImage();
-        setCellTable();
-        Image image1 = new Image(getClass().getResourceAsStream("/images/library-icon-png-18.jpg"));
-        Image image2 = new Image(getClass().getResourceAsStream("/images/65004-emoticon-smiley-sad-geek-nerd-emoji.png"));
-        book.setImage(image1);
-        smile.setImage(image2);
-    }
+
 
     private void setCellTable(){
         idColm.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -317,40 +314,77 @@ public class MenuController implements Initializable {
         statusColm.setCellValueFactory(new PropertyValueFactory<>("status"));
         imageColm.setCellValueFactory(new PropertyValueFactory<>("image"));
     }
-    @FXML
-    void choosingRow(MouseEvent event) {
+//    @FXML
+//    void choosingRow(MouseEvent event) {
+//        DataBase.preparedStatement = null;
+//        DataBase.result = null;
 //        try {
-//           InputStream inputStream = LoginController.result.getBinaryStream("image");
-//        OutputStream outputStream = new FileOutputStream(new File("photo.jpg"));
-//        byte[] content = new byte[1024];
-//        int size = 0;
-//        while ((size = inputStream.read(content)) != -1){
-//            outputStream.write(content,0,size);
-//        }
-//        coverOfBook.setImage();
-//            LoginController.result.close();
-//            LoginController.preparedStatement.close();
-//        }
-//        catch (SQLException  | java.io.IOException e){
+//           String sql = "select id,image from books";
+//           DataBase.preparedStatement = DataBase.connection.prepareStatement(sql);
+//           DataBase.result = DataBase.preparedStatement.executeQuery(sql);
+//
+//            VBox imageContainer = new VBox();
+//
+//           while (DataBase.result.next()){
+//               InputStream is = DataBase.result.getBinaryStream("image");
+//               int bookId = DataBase.result.getInt("id");
+//               String fileName = "img_" + bookId + ".jpg";
+//               OutputStream os = new FileOutputStream(new File(fileName));
+//               byte [] content= new byte[1024];
+//               int size=0;
+//               while ((size=is.read(content))!=-1){
+//                   os.write(content, 0, size);
+//               }
+//               is.close();
+//               os.close();
+//               javafx.scene.image.Image image = new Image("file:" + fileName);
+//               ImageView imageView = new ImageView(image);
+//               imageView.setPreserveRatio(true);
+//
+//               // Add the ImageView instance to the imageContainer
+//               imageContainer.getChildren().add(imageView);
+//           }
+//            coverOfBook.
+//
+//
+//        } catch (SQLException | java.io.IOException e) {
 //            e.printStackTrace();
 //        }
-        try {
-            LoginController.preparedStatement.executeUpdate();
-            InputStream inputStream = LoginController.result.getBinaryStream("image");
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            byte[] content = new byte[1024];
-            int size;
-            while ((size = inputStream.read(content)) != -1) {
-                outputStream.write(content, 0, size);
-            }
-            byte[] imageBytes = outputStream.toByteArray();
-            Image image = new Image(new ByteArrayInputStream(imageBytes));
-            coverOfBook.setImage(image);
+//        finally {
+//            if (DataBase.result != null) {
+//                try {
+//                    DataBase.result.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (  DataBase.preparedStatement != null) {
+//                try {
+//                    DataBase.preparedStatement.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//    }
 
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
-        }
-
+    @FXML
+    void choosingRow(){
+        table.getSelectionModel().getSelectedItem();
+        int num = table.getSelectionModel().getFocusedIndex();
+        if((num-1) <-1) return;
+        String url = "file:" +  table.getSelectionModel().getSelectedItem().getImage();
+        Image image1 = new Image(url);
+        coverOfBook.setImage(image1);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        designInserImage();
+        setCellTable();
+        Image image1 = new Image(getClass().getResourceAsStream("/images/library-icon-png-18.jpg"));
+        Image image2 = new Image(getClass().getResourceAsStream("/images/65004-emoticon-smiley-sad-geek-nerd-emoji.png"));
+        book.setImage(image1);
+        smile.setImage(image2);
     }
 
 }

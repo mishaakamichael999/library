@@ -60,32 +60,49 @@ public class AddingController {
 
     @FXML
     void btnAcceptAdd(ActionEvent event) throws FileNotFoundException {
-
+        DataBase.preparedStatement = null;
+        DataBase.result = null;
         try {
             String sql = "insert into books(name, author, publishDate, quality, regDate, status, image) values (?, ?, ?, ?, ?, ?, ?)";
-            LoginController.preparedStatement = LoginController.connection.prepareStatement(sql);
+            DataBase.preparedStatement = DataBase.connection.prepareStatement(sql);
 
-            LoginController.preparedStatement.setString(1, nameField.getText());
-            LoginController.preparedStatement.setString(2, authorField.getText());
+            DataBase.preparedStatement.setString(1, nameField.getText());
+            DataBase.preparedStatement.setString(2, authorField.getText());
 
             LocalDate publishDateFieldValueDate = publishDateField.getValue();
             String pattern = "yyyy-MM-dd";
             String datePattern = publishDateFieldValueDate.format(DateTimeFormatter.ofPattern(pattern));
             Date date = Date.valueOf(datePattern);
-            LoginController.preparedStatement.setDate(3, date);
+            DataBase.preparedStatement.setDate(3, date);
 
-            LoginController.preparedStatement.setString(4, qualityField.getText());
+            DataBase.preparedStatement.setString(4, qualityField.getText());
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDateTime now = LocalDateTime.now();
-            LoginController.preparedStatement.setString(5, dtf.format(now));
+            DataBase.preparedStatement.setString(5, dtf.format(now));
 
-            LoginController.preparedStatement.setInt(6, 1);
-            LoginController.preparedStatement.setBinaryStream(7,  (InputStream)MenuController.bookImage);
+            DataBase.preparedStatement.setInt(6, 1);
+            DataBase.preparedStatement.setBinaryStream(7,  (InputStream)MenuController.bookImage);
             System.out.println("done");
-            LoginController.preparedStatement.executeUpdate();
+            DataBase.preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            if (DataBase.result != null) {
+                try {
+                    DataBase.result.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (  DataBase.preparedStatement != null) {
+                try {
+                    DataBase.preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
